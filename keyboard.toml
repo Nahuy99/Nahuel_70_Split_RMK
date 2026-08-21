@@ -76,6 +76,11 @@ keymap = [
 
 [ble]
 enabled = true
+battery_adc_pin = "vddh"
+adc_divider_measured = 2000
+adc_divider_total = 2806
+default_tx_power = 0
+use_2m_phy = true
 
 [behavior.morse.profiles]
 HRM = { unilateral_tap = true, permissive_hold = true, hold_timeout = "250ms", gap_timeout = "120ms" }
