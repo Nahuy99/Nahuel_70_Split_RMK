@@ -1,35 +1,109 @@
-# Documentation: https://rmk.rs/docs/configuration.html
 [keyboard]
-name = "RMK Keyboard"
-product_name = "RMK Keyboard"
-vendor_id = 0x4c4b
-product_id = 0x4643
-manufacturer = "RMK"
-chip = "rp2040"
-
-[matrix]
-# Row and col pins are mandatory
-row_pins = ["PIN_6", "PIN_7", "PIN_8", "PIN_9"]
-col_pins = ["PIN_19", "PIN_20", "PIN_21"]
-
-# RMK uses col2row as the default matrix diode direction, if you want to use a row2col matrix, add `row2col = true`
-# row2col = true
+name = "Nahuel Split 70"
+product_name = "Nahuel Split 70"
+vendor_id = 0x4E41
+product_id = 0x0000
+manufacturer = "Nahuel"
+chip = "nrf52840"
 
 [layout]
-rows = 4
-cols = 3
-layers = 2
+rows = 12
+cols = 8
+layers = 4
 keymap = [
-    [
-        ["A", "B", "C"],
-        ["Kc1", "Kc2", "Kc3"],
-        ["LCtrl", "MO(1)", "LShift"],
-        ["OSL(1)", "LT(2, Kc9)", "LM(1, LShift | LGui)"]
-    ],
-    [
-        ["_", "TT(1)", "TG(2)"],
-        ["_", "_", "_"],
-        ["_", "_", "_"],
-        ["_", "_", "_"]
-    ],
+[
+    ["G", "G", "G", "G", "G", "G", "G","_"],
+    ["D", "D", "D", "D", "D", "D", "D","_"],
+    ["V", "V", "V", "V", "V", "V", "V","_"],
+    ["C", "C", "C", "C", "C", "C", "C","C"],
+    ["X", "X", "X", "X", "X", "X", "X","X"],
+    ["_", "_", "_", "_", "_", "_", "_","Z"],
+
+    ["G", "G", "G", "G", "G", "G", "G","_"],
+    ["D", "D", "D", "D", "D", "D", "D","_"],
+    ["V", "V", "V", "V", "V", "V", "V","_"],
+    ["C", "C", "C", "C", "C", "C", "C","C"],
+    ["X", "X", "X", "X", "X", "X", "X","X"],
+    ["_", "_", "_", "_", "_", "_", "_","Z"],
+],
+[
+    ["G", "G", "G", "G", "G", "G", "G","_"],
+    ["D", "D", "D", "D", "D", "D", "D","_"],
+    ["V", "V", "V", "V", "V", "V", "V","_"],
+    ["C", "C", "C", "C", "C", "C", "C","C"],
+    ["X", "X", "X", "X", "X", "X", "X","X"],
+    ["_", "_", "_", "_", "_", "_", "_","Z"],
+
+    ["G", "G", "G", "G", "G", "G", "G","_"],
+    ["D", "D", "D", "D", "D", "D", "D","_"],
+    ["V", "V", "V", "V", "V", "V", "V","_"],
+    ["C", "C", "C", "C", "C", "C", "C","C"],
+    ["X", "X", "X", "X", "X", "X", "X","X"],
+    ["_", "_", "_", "_", "_", "_", "_","Z"],
+],
+[
+    ["G", "G", "G", "G", "G", "G", "G","_"],
+    ["D", "D", "D", "D", "D", "D", "D","_"],
+    ["V", "V", "V", "V", "V", "V", "V","_"],
+    ["C", "C", "C", "C", "C", "C", "C","C"],
+    ["X", "X", "X", "X", "X", "X", "X","X"],
+    ["_", "_", "_", "_", "_", "_", "_","Z"],
+
+    ["G", "G", "G", "G", "G", "G", "G","_"],
+    ["D", "D", "D", "D", "D", "D", "D","_"],
+    ["V", "V", "V", "V", "V", "V", "V","_"],
+    ["C", "C", "C", "C", "C", "C", "C","C"],
+    ["X", "X", "X", "X", "X", "X", "X","X"],
+    ["_", "_", "_", "_", "_", "_", "_","Z"],
+],
+[
+    ["G", "G", "G", "G", "G", "G", "G","_"],
+    ["D", "D", "D", "D", "D", "D", "D","_"],
+    ["V", "V", "V", "V", "V", "V", "V","_"],
+    ["C", "C", "C", "C", "C", "C", "C","C"],
+    ["X", "X", "X", "X", "X", "X", "X","X"],
+    ["_", "_", "_", "_", "_", "_", "_","Z"],
+
+    ["G", "G", "G", "G", "G", "G", "G","_"],
+    ["D", "D", "D", "D", "D", "D", "D","_"],
+    ["V", "V", "V", "V", "V", "V", "V","_"],
+    ["C", "C", "C", "C", "C", "C", "C","C"],
+    ["X", "X", "X", "X", "X", "X", "X","X"],
+    ["_", "_", "_", "_", "_", "_", "_","Z"],
+],
 ]
+
+
+[ble]
+enabled = true
+
+[behavior.morse.profiles]
+HRM = { unilateral_tap = true, permissive_hold = true, hold_timeout = "250ms", gap_timeout = "120ms" }
+FH = { hold_on_other_press = true, unilateral_tap = false, hold_timeout = "200ms", gap_timeout = "200ms" }
+MRZ = { normal_mode = true, unilateral_tap = false, hold_timeout = "200ms", gap_timeout = "200ms" }
+
+[split]
+connection = "ble"
+
+[split.central]
+rows = 6
+cols = 8
+row_offset = 0
+col_offset = 0
+
+[split.central.matrix]
+row_pins = ["P0_31", "P0_29", "P0_02", "P1_13","P1_15","P1_11"]
+col_pins = ["P0_24","P1_00","P0_11","P1_04","P1_06","P0_09","P0_10","P0_22"]
+
+[[split.peripheral]]
+rows = 6
+cols = 8
+row_offset = 6
+col_offset = 0
+
+[split.peripheral.matrix]
+row_pins = ["P0_31", "P0_29", "P0_02", "P1_13","P1_15","P1_11"]
+col_pins = ["P0_24","P1_00","P0_11","P1_04","P1_06","P0_09","P0_10","P0_22"]
+
+[host]
+unlock_keys = [[0,0],[0,1]]
